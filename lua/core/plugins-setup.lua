@@ -12,22 +12,49 @@ local ensure_packer = function()
   local packer_bootstrap = ensure_packer()
   
   return require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
+  use 'wbthomason/packer.nvim'
+
   -- insert packer plugins between this lines
   -- themes
   use "folke/tokyonight.nvim"
 
-  vim.cmd[[set background=dark]]
-  vim.cmd[[colorscheme tokyonight]]
+  -- lua-line theme
+  use "nvim-lualine/lualine.nvim"
 
   -- nvim tree for sidebar & telescope
   use "nvim-tree/nvim-tree.lua"
   use "nvim-tree/nvim-web-devicons"
   use "nvim-treesitter/nvim-treesitter"
 
-  -- end if plugins section
+  -- autopairs
+  use "windwp/nvim-autopairs"
+  use "windwp/nvim-ts-autotag"
 
-    if packer_bootstrap then
+  -- completions
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-path"
+  use "hrsh7th/cmp-nvim-lsp"
+
+  -- snippets
+  use "L3MON4D3/LuaSnip"
+  use "rafamadriz/friendly-snippets"
+  use "saadparwaiz1/cmp_luasnip"
+
+  -- formatear
+
+  -- lsp -> language server protocols
+  use {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+      "glepnir/lspsaga.nvim", branch = "main", -- for window like vscode
+      "jose-elias-alvarez/typescript.nvim",
+      "onsails/lspkind.nvim"
+  }
+
+  -- end if plugins section
+  if packer_bootstrap then
       require('packer').sync()
-    end
-  end)
+  end
+end)
