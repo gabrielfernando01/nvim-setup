@@ -1,4 +1,5 @@
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+
 if not lspconfig_status then
     return
 end
@@ -8,10 +9,10 @@ if not cmp_nvim_lsp_status then
     return
 end
 
-local typescript_setup, typescript = pcall(require, "typescript")
-if not typescript_setup then
-    return
-end
+--local typescript_setup, typescript = pcall(require, "typescript")
+--if not typescript_setup then
+    --return
+--end
 
 local keymap = vim.keymap
 local on_attach = function(client, buffnr)
@@ -43,13 +44,6 @@ lspconfig.html.setup({
     on_attach = on_attach
 })
 
-typescript.setup({
-    server = {
-        capabilities = capabilities,
-        on_attach = on_attach
-    }
-})
-
 lspconfig.tailwindcss.setup({
     capabilities = capabilities,
     on_attach = on_attach
@@ -67,13 +61,26 @@ lspconfig.rust_analyzer.setup({
     }
 })
 
-lspconfig.jdtls.setup({
+--lspconfig.jdtls.setup({
+--    server = {
+--        capabilities = capabilities,
+--        on_attach = on_attach
+--    }
+-- })
+
+lspconfig.harper_ls.setup({
     server = {
         capabilities = capabilities,
         on_attach = on_attach
     }
 })
 
+--lspconfig.java_language_server.setup({
+--    server = {
+--        capabilities = capabilities,
+--        on_attach = on_attach
+--    }
+--})
 
 lspconfig.pyright.setup({
     server = {

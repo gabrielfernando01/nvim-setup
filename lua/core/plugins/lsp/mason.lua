@@ -1,4 +1,5 @@
 local mason_status, mason = pcall(require, "mason")
+
 if not mason_status then
     return
 end
@@ -14,12 +15,11 @@ mason_lspconfig.setup({
     ensure_installed = {
         "lua_ls",
         "tailwindcss",
-        "tsserver",
         "rust_analyzer",
-        "jdtls",
         "texlab",
         "marksman",
         "remark_ls",
+        "harper_ls",
         "pyright",
         "lemminx",
         "jsonls",
